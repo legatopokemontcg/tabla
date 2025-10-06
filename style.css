@@ -1,0 +1,130 @@
+body {
+background: #000 url("fondo.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+body::before {
+  content: "";
+  position: fixed;  font-family: 'Bebas Neue', sans-serif;
+
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* oscurece el fondo */
+  z-index: -1; /* queda detrás del contenido */
+}
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 10px;
+    width: 90%;
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.titulo {
+  font-size: 3rem;
+  margin: 0 0 0px;
+   color: white;
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+thead th {
+  background: #111;
+  color: white;
+  padding: 10px 5px;
+}
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #222;
+}
+
+tbody tr td:first-child {
+  background: #222;
+}
+
+tbody tr:nth-child(odd) {
+  background: #d72638;
+}
+
+tbody tr:nth-child(even) {
+  background: #e83f4e;
+}
+
+.nombre {
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.imagenes {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* alinea verticalmente */
+  gap: 0px;               /* espacio entre imágenes */
+  margin: 0px 0 0px;
+}
+
+.logo {
+  width: 150px;
+  max-width: 45%;
+  opacity: 1;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+td:nth-child(3) {
+  background: linear-gradient(180deg, #0aadff, #0392ff);
+  color: white;
+}
+
+td:nth-child(4) {
+  background: linear-gradient(180deg, #ff0a0a, #ee8e44);
+  color: white;
+}
+
+td:nth-child(5) {
+  background: linear-gradient(180deg, #ffd60a, #d79a00);
+  color: black;
+  font-weight: bold;
+}
+
+td:nth-child(6) {
+  background: #222;
+  color: white;
+}
+
+.nota {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+.club {
+  font-size: 0.9rem;
+  background: #111;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 5px;
+  margin-top: 8px;
+}
