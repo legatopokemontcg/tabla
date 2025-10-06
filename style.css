@@ -10,6 +10,9 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
 
 .imagenes a {
   display: inline-block; /* mantiene las imágenes lado a lado */
+  width: 150px; /* 🔧 ajusta este número al tamaño original que tenías */
+  height: auto;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .imagenes img {
@@ -23,6 +26,7 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
   filter: brightness(1.2);
   cursor: pointer;
 }
+
 .club-link {
   text-decoration: none; /* quita subrayado */
   color: white; /* mantiene el color del texto original */
@@ -158,6 +162,7 @@ td:nth-child(6) {
   border-radius: 5px;
   margin-top: 8px;
 }
+
 
 
 
