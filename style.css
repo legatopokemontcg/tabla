@@ -7,6 +7,19 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
   margin: 0;
   padding: 0;
 }
+
+.club-link {
+  text-decoration: none; /* quita subrayado */
+  color: inherit; /* mantiene el color del texto original */
+}
+
+.club-link:hover .club {
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
 body::before {
   content: "";
   position: fixed;  font-family: 'Bebas Neue', sans-serif;
@@ -128,3 +141,4 @@ td:nth-child(6) {
   border-radius: 5px;
   margin-top: 8px;
 }
+
