@@ -7,7 +7,11 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
   margin: 0;
   padding: 0;
 }
-
+a img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
 .club-link {
   text-decoration: none; /* quita subrayado */
   color: white; /* mantiene el color del texto original */
@@ -143,5 +147,6 @@ td:nth-child(6) {
   border-radius: 5px;
   margin-top: 8px;
 }
+
 
 
