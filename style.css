@@ -10,9 +10,11 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
 
 .club-link {
   text-decoration: none; /* quita subrayado */
-  color: inherit; /* mantiene el color del texto original */
+  color: white; /* mantiene el color del texto original */
 }
-
+.club {
+  cursor: pointer;
+}
 .club-link:hover .club {
   text-shadow: 0 0 10px rgba(255,255,255,0.7);
   cursor: pointer;
@@ -141,4 +143,5 @@ td:nth-child(6) {
   border-radius: 5px;
   margin-top: 8px;
 }
+
 
