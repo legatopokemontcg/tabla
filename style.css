@@ -8,9 +8,9 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
   padding: 0;
 }
 a img {
-  width: 100%;
+  width: 150px;     
   height: auto;
-  max-width: none;
+  display: inline-block;
 }
 .club-link {
   text-decoration: none; /* quita subrayado */
@@ -147,6 +147,7 @@ td:nth-child(6) {
   border-radius: 5px;
   margin-top: 8px;
 }
+
 
 
 
