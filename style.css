@@ -29,7 +29,7 @@ background: #000 url("fondo.jpg") center/cover no-repeat;
 
 .club-link {
   text-decoration: none; /* quita subrayado */
-  color: white; /* mantiene el color del texto original */
+  color: rgb(31, 31, 31); /* mantiene el color del texto original */
 }
 .club {
   cursor: pointer;
@@ -155,19 +155,11 @@ td:nth-child(6) {
 }
 
 .club {
-  font-size: 0.9rem;
-  background: #111;
+  font-size: 1.7rem;
+  background: #ffffff;
   display: inline-block;
   padding: 8px 20px;
   border-radius: 5px;
-  margin-top: 8px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
-
-
-
-
-
-
-
-
-
