@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo Standard 28/09/25</title>
+<style>
+    /* 1. CLAVE PARA EL DESBORDE: Aplica box-sizing a TODOS los elementos */
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* --- ESTILOS GENERALES Y FUENTE --- */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    
+    body {
+        /* Eliminé box-sizing: border-box; de aquí porque ya está en '*' */
+        background-color: #111111; /* Fondo muy oscuro */
+        color: #f0f0f0; /* Color de texto claro */
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        /* Garantía final contra la barra de desplazamiento */
+        overflow-x: hidden; 
+    }
+    
+    /* NUEVO ESTILO PARA EL BOTÓN ATRÁS (no lo moví, pero su posición absoluta funciona) */
+    .back-button {
+        position: absolute; 
+        top: 30px; 
+        left: 335px; /* Ajusté a 30px para que se alinee con el contenido */
+        text-decoration: none;
+        color: #f0f0f0; 
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 8px 12px;
+        background-color: rgba(30, 30, 30, 0.5); 
+        border-radius: 8px;
+        transition: background-color 0.2s;
+        z-index: 100; 
+    }
+
+    .back-button:hover {
+        background-color: rgba(50, 50, 50, 0.8); 
+    }
+
+    /* --- CONTENEDOR PRINCIPAL (Centrado) --- */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px; /* Ya no causa desborde gracias a box-sizing */
+    }
+
+    /* --- ENCABEZADO SUPERIOR (resto de estilos se mantienen) --- */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #333;
+        margin-bottom: 1px;
+    }
+
+    .tournament-info h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .tournament-info .flag {
+        margin-left: 10px;
+        font-size: 1.5rem;
+    }
+
+    .tournament-info p {
+        font-size: 0.9rem;
+        color: #aaaaaa;
+        margin: 5px 0 0 0;
+        font-weight: 400;
+    }
+
+    .nav-links a {
+        color: #f0f0f0;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding: 5px 0;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+        opacity: 1;
+    }
+
+    /* --- ESTILOS DE LA TABLA --- */
+    .standings-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .standings-table thead th {
+        color: #aaaaaa;
+        font-weight: 400;
+        font-size: 0.9rem;
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid #333;
+    }
+
+    .standings-table tbody tr {
+        border-bottom: 1px solid #222;
+        transition: background-color 0.2s;
+    }
+
+    .standings-table tbody tr:hover {
+        background-color: #1a1a1a;
+    }
+
+    .standings-table td {
+        padding: 12px 10px;
+        font-size: 0.95rem;
+        white-space: nowrap; 
+    }
+
+    /* Alineación de columnas */
+    .col-rank {
+        width: 5%;
+        font-weight: 700;
+    }
+
+    .col-player {
+        width: 35%;
+    }
+
+    .col-country, .col-deck, .col-list {
+        text-align: center;
+    }
+    
+    .col-country {
+        width: 15%;
+    }
+    
+    .col-deck {
+        width: 15%;
+    }
+    
+    .col-list {
+        width: 10%;
+    }
+
+    /* Estilo de la bandera */
+    .country-flag {
+        font-size: 1.2rem;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    /* --- ESTILOS DE LOS ICONOS CORREGIDOS --- */
+    .deck-icon {
+        /* 2. CORRECCIÓN: Usar 'px' y poner width en 'auto' para respetar la relación de aspecto */
+        width: auto; 
+        height: 35px; /* Especifica la altura con unidades (px) */
+        display: inline-block;
+        vertical-align: middle; 
+    }
+
+    /* Estilo del icono de lista */
+    .list-icon a {
+        color: #aaaaaa;
+        text-decoration: none;
+        font-size: 1.2rem;
+        display: inline-block;
+        transition: color 0.2s;
+    }
+    
+    .list-icon a:hover {
+        color: #f0f0f0;
+    }
+
+    .image-footer {
+    /* Mismo ancho que el contenedor principal */
+    max-width: 1200px;
+    /* Centra el bloque de la imagen */
+    margin: 20px auto 0 auto; 
+    /* Alinea la imagen a la izquierda si es más pequeña */
+    text-align: left; 
+
+}
+
+.full-width-image {
+    /* Asegura que la imagen nunca exceda el ancho de su contenedor (.image-footer) */
+    max-width: 100%; 
+    /* Mantiene la relación de aspecto para que no se vea estirada */
+    height: auto; 
+    /* Si la imagen no ocupa el 100% y quieres centrarla horizontalmente */
+    display: block; 
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#" class="back-button" onclick="history.back(); return false;">Atrás</a>
+            <div class="tournament-info">
+                <h1>Torneo Standard<span class="flag">PT</span></h1>
+                <p>28 de septiembre de 2025 • Domingo</p>
+            </div>
+        </div>
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th class="col-rank">#</th>
+                    <th class="col-player">Jugador</th>
+                    <th class="col-country">Partidas ganadas</th>
+                    <th class="col-deck">Deck</th>
+                    <th class="col-list">Lista</th>
+                </tr>
+            </thead>
+            <tbody>
+<tr>
+    <td class="col-rank">1</td>
+    <td class="col-player">Santiago Puma</td>
+    <td class="col-country"><span class="country-flag">3</span></td>
+    <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/dragapult.png" alt="Icono Tipo Planta" class="deck-icon"style="height: 30px; width: auto;">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/dusknoir.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+    
+    <td class="col-list">
+    <span class="list-icon">
+        <a href='../decks/alakazam-kevin-fun051025.png'>☰</a>
+    </span>
+</td>
+</tr>
+                <tr>
+                    <td class="col-rank">2</td>
+                    <td class="col-player">Fabricio Quispe</td>
+                    <td class="col-country"><span class="country-flag">3</span></td>
+                      <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/roaring-moon.png" alt="Icono Tipo Planta" class="deck-icon">
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                <tr>
+                    <td class="col-rank">3</td>
+                    <td class="col-player">Alison López</td>
+                    <td class="col-country"><span class="country-flag">3</span></td>
+                  <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/gardevoir-mega.png" alt="Icono Tipo Planta" class="deck-icon">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/munkidori.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                <tr>
+                    <td class="col-rank">4</td>
+                    <td class="col-player">Fabikito Puma</td>
+                    <td class="col-country"><span class="country-flag">1</span></td>
+                 <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/venusaur-mega.png" alt="Icono Tipo Planta" class="deck-icon">
+ 
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                <tr>
+                    <td class="col-rank">5</td>
+                    <td class="col-player">Jeremy Molina</td>
+                    <td class="col-country"><span class="country-flag">1</span></td>
+                   <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/charizard.png" alt="Icono Tipo Planta" class="deck-icon">
+     <img src="https://r2.limitlesstcg.net/pokemon/gen9/dragapult.png" alt="Icono Tipo Planta" class="deck-icon"style="height: 30px; width: auto;">
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                <tr>
+                    <td class="col-rank">6</td>
+                    <td class="col-player">Fabián Vargas</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">1</span></td>
+       <td class="col-deck">
+    <img src="https://r2.limitlesstcg.net/pokemon/gen9/bouffalant.png" alt="Icono Tipo Planta" class="deck-icon" style="height: 26px; width: auto;">
+    <img src="https://r2.limitlesstcg.net/pokemon/gen9/terapagos.png" alt="Icono Tipo Bicho" class="deck-icon" style="height: 26px; width: auto;">
+</td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                                <tr>
+                    <td class="col-rank">7</td>
+                    <td class="col-player">Sergio Estrada</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">0</span></td>
+        <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/grimmsnarl.png" alt="Icono Tipo Planta" class="deck-icon">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/froslass.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                                <tr>
+                    <td class="col-rank">8</td>
+                    <td class="col-player">Melvin Tito</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">0</span></td>
+      <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/raging-bolt.png" alt="Icono Tipo Planta" class="deck-icon">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/bellibolt.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                                <tr>
+                    <td class="col-rank">9</td>
+                    <td class="col-player">Luis Miranda</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">0</span></td>
+<td class="col-deck">
+    <img src="https://i.redd.it/e5hvqh5a4k7c1.png" alt="Icono Tipo Planta" class="deck-icon" style="height: 35px; width: auto;">
+</td>
+                    <td class="col-list"><span class="list-icon"><a href="#">☰</a></span></td>
+                </tr>
+                                <tr>
+                    <td class="col-rank">10</td>
+                    <td class="col-player">Rafael Singuri</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">0</span></td>
+                     <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/raging-bolt.png" alt="Icono Tipo Planta" class="deck-icon">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/noctowl.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+                          <td class="col-list">
+    <span class="list-icon">
+        <a href='../decks/ragingbolt-rafael-standard280925.png'>☰</a>
+    </span>
+</td>
+                </tr>
+                                <tr>
+                    <td class="col-rank">11</td>
+                    <td class="col-player">Kevin Jaimes</td>
+                    <td class="col-country"><span class="country-flag" style="color: #ffffff;">0</span></td>
+       <td class="col-deck">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/dragapult.png" alt="Icono Tipo Planta" class="deck-icon"style="height: 30px; width: auto;">
+        <img src="https://r2.limitlesstcg.net/pokemon/gen9/dusknoir.png" alt="Icono Tipo Bicho" class="deck-icon">
+    </td>
+                      <td class="col-list">
+    <span class="list-icon">
+        <a href='../decks/dragapult-kevin-standard280925.png'>☰</a>
+    </span>
+</td>
+                </tr>
+                </tbody>
+        </table>
+           <div class="image-footer">
+    <a href="../torneos/torneo-standard-28sep25.png">
+        <img src="../torneos/torneo-standard-28sep25.png" alt="Imagen del Torneo o Patrocinador" class="full-width-image">
+    </a>
+</div>
+
+    </div>
+
+</body>
+</html>
