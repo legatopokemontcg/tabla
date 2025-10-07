@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneos Pokémon TCG 2025</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+  body {
+   background: #353535 url("fondo.jpg") center/cover no-repeat fixed; /* Añadido 'fixed' */
+    color: #e6e6e6;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 30px 15px;
+    text-align: center; 
+  }
+body::before {
+  content: "";
+  position: fixed; 
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9); /* oscurece el fondo */
+  z-index: -1; 
+}
+
+  /* NUEVO ESTILO PARA EL BOTÓN ATRÁS */
+  .back-button {
+    position: absolute; /* Hace que flote */
+    top: 30px; /* Separación desde arriba */
+    left: 15px; /* Separación desde la izquierda */
+    text-decoration: none;
+    color: #f0f0f0; /* Color del texto (blanco/gris claro) */
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    background-color: rgba(30, 30, 30, 0.5); /* Fondo semitransparente */
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+  }
+
+  .back-button:hover {
+    background-color: rgba(50, 50, 50, 0.8); /* Oscurece al pasar el ratón */
+  }
+  /* NUEVO ESTILO PARA EL TÍTULO H1 */
+  .page-title {
+    text-align: left; /* Alineación del texto a la izquierda */
+    font-size: 3rem; /* Tamaño grande */
+    font-weight: 900; /* Más peso para que se vea más grueso */
+    color: #ffffff;
+    line-height: 1.1; /* Espacio entre líneas */
+    margin: 50px 0 10px 0; /* Espaciado inferior */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9); /* Sombra para resaltar */
+    /* Centramos el título dentro del flujo */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Pequeño padding para que no toque el borde en móvil */
+      font-family: 'Anton', sans-serif;
+  }
+  
+  /* Ajuste para el contenedor de la tabla */
+  .main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left; 
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+  }
+
+  /* CAPTION ha sido eliminado. Si lo dejas, solo déjale el display: none; */
+  caption {
+    display: none;
+  }
+  
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #a1a1a1;
+    padding: 10px 16px;
+  }
+
+  tr {
+    background-color: #161616;
+    border-radius: 12px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  tr:hover {
+    background-color: #1e1e1e;
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+
+  td {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    border: none;
+  }
+
+  .players {
+    text-align: right;
+    color: #b4d4ff;
+    font-weight: 500; 
+  }
+
+  .winner {
+    color: #f8f8f8;
+    font-weight: 500;
+  }
+
+  /* Curvas visuales */
+  tbody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  tbody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  /* Responsivo */
+  @media (max-width: 700px) {
+    /* Ajuste del título en móvil */
+    .page-title {
+      font-size: 2.2rem;
+      text-align: center;
+    }
+
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      background-color: #161616;
+      margin-bottom: 12px;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    td {
+      padding: 6px 0;
+      text-align: right;
+      position: relative;
+      font-size: 0.9rem;
+    }
+
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      color: #888;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .players {
+      color: #b4d4ff;
+    }
+  }
+</style>
+</head>
+<body>
+ <a href="#" class="back-button" onclick="history.back(); return false;">Atrás</a>
+  <h1 class="page-title">HISTORIAL DE TORNEOS</h1>
+
+  <div class="main-container"> 
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Jugadores</th>
+          <th>Ganador</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="window.location.href='torneos/torneo-fun-05oct25.html'">
+          <td data-label="Fecha">05 Oct 25</td>
+          <td data-label="Nombre">Torneo FUN</td>
+          <td data-label="Jugadores" class="players">11</td>
+          <td data-label="Ganador" class="winner">Kevin Jaimes</td>
+        </tr>
+        <tr onclick="window.location.href='torneos/torneo-standard-28sep25.html'">
+          <td data-label="Fecha">28 Sep 25</td>
+          <td data-label="Nombre">Torneo Standard</td>
+          <td data-label="Jugadores" class="players">11</td>
+          <td data-label="Ganador" class="winner">Santiago Puma</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+
+</body>
+</html>
